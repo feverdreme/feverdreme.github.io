@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jeffrey Huang | Cornell University</title>
+  <meta name="description" content="Jeffrey Huang studies computer science and mathematics at Cornell. Research in programming languages, type inference, program verification, and AI.">
+  <meta name="theme-color" content="#faf9f6">
+  <meta property="og:title" content="Jeffrey Huang">
+  <meta property="og:description" content="Computer science and mathematics at Cornell. Programming languages, program verification, and AI.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://feverdreme.github.io/">
+  <meta property="og:image" content="https://feverdreme.github.io/assets/portrait.jpg">
+  <link rel="canonical" href="https://feverdreme.github.io/">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="shell">
+  <header class="masthead">
+    <a class="wordmark" href="./">Jeffrey Huang</a>
+    <nav aria-label="Main navigation">
+      <a href="#research">Research</a><a href="projects.html">Projects</a><a href="writing.html">Writing</a><a href="assets/Jeffrey-Huang-CV.pdf">CV ↗</a>
+    </nav>
+  </header>
+  <main id="main">
+    <section class="hero" aria-labelledby="name">
+      <div>
+        <p class="eyebrow">Cornell University · Computer Science &amp; Mathematics</p>
+        <h1 id="name">Hi, I’m Jeffrey.</h1>
+        <p class="intro">I’m a senior at Cornell studying computer science and mathematics. I’m interested in programming languages, software engineering, and their intersection with AI.</p>
+        <p class="subintro">My research has ranged from type inference for polymorphic and dependently typed languages to latent reasoning in neural networks. I’m currently working with Alexandra Silva on proof synthesis.</p>
+        <div class="contact-links"><a href="mailto:jrh382@cornell.edu">Email</a><a href="https://github.com/feverdreme">GitHub ↗</a><a href="assets/Jeffrey-Huang-CV.pdf">Curriculum vitae ↗</a></div>
+      </div>
+      <div><img class="portrait" src="assets/portrait.jpg" alt="Jeffrey Huang at the beach" width="460" height="460" fetchpriority="high"></div>
+    </section>
+
+    <section class="section" id="research" aria-labelledby="research-heading">
+      <div class="section-heading"><h2 id="research-heading">Research</h2></div>
+      <article class="research-entry">
+        <div class="when"><span class="status">Current</span><span>Fall 2026</span></div>
+        <div><h3>Proof synthesis &amp; program specifications</h3><p class="meta">Cornell University · Advisor: Alexandra Silva</p><p>I’m exploring how AI can help learn program specifications, with a focus on Outcome Logic. My current work is a literature review of the logic and automated techniques for reasoning about program behavior.</p></div>
+      </article>
+      <article class="research-entry">
+        <div class="when"><span>2024–2025</span></div>
+        <div><h3>Dynamic scheduling for type inference</h3><p class="meta">Cornell University · Advisors: Nate Foster &amp; Jules Jacobs</p><p>I researched how dynamically scheduling type inference constraints can generalize the heuristics used by Quick Look and FreezeML. I implemented the approach for System F and a dependently typed core calculus, and evaluated it using the Quick Look benchmark.</p><div class="entry-links"><a href="research/type-inference.html">Project overview →</a><a href="assets/system-f-type-inference.pdf">Slides (PDF) ↗</a></div></div>
+      </article>
+      <article class="research-entry">
+        <div class="when"><span>Spring 2026</span></div>
+        <div><h3>Latent reasoning</h3><p class="meta">Cornell University · Advisor: Daniel Halpern-Leistner</p><p>I built infrastructure for recurrent distillation: a prototype student model, a pipeline for extracting teacher-model hidden-state reasoning traces, and a Sudoku trace dataset for pre-training experiments.</p><div class="entry-links"><a href="assets/latent-reasoning-report.pdf">Semester report (PDF) ↗</a></div></div>
+      </article>
+      <article class="research-entry">
+        <div class="when"><span>Spring 2026</span></div>
+        <div><h3>Interpreting authorship representations</h3><p class="meta">Cornell University · Advisor: Claire Cardie</p><p>I worked on the interpretability of universal authorship representations, testing an existing benchmark on larger models using the project’s evaluation infrastructure.</p></div>
+      </article>
+      <article class="research-entry">
+        <div class="when"><span>Fall 2024</span></div>
+        <div><h3>Language-agnostic code embeddings</h3><p class="meta">Cornell University · Research course with Marten van Schijndel</p><p>In a group project, I replicated experiments from Utpala et al. (2023) on how models represent code across programming languages. We also explored extending the analysis to programming paradigms. My code contributions include a CodeSearchNet loader and normalized mean reciprocal rank evaluation.</p><div class="entry-links"><a href="https://github.com/adlrwbr/paradigm-agnostic-code-embeddings">Code ↗</a><a href="assets/paradigm-agnostic-code-embeddings.pdf">Project report (PDF) ↗</a></div></div>
+      </article>
+    </section>
+
+    <section class="section" id="projects" aria-labelledby="projects-heading">
+      <div class="section-heading"><h2 id="projects-heading">Things I’ve built</h2><a href="projects.html">All projects →</a></div>
+      <p class="section-intro">A selection of language implementations, systems, and tools. More projects and experiments are collected on the <a href="projects.html">projects page</a>.</p>
+      <div class="project-list">
+        <article class="project"><h3><a href="https://github.com/ethanuppal/cs3110_compiler">x86ISTMB ↗</a></h3><p>An optimizing compiler from a custom language to x86. In a five-person team, I worked on the parser, lexer, abstract syntax tree, and type checking.</p><p class="tech">OCaml · Compilers · Course project</p><div class="entry-links"><a href="https://github.com/ethanuppal/cs3110_compiler/blob/main/docs/user_manual.md">User manual ↗</a></div></article>
+        <article class="project"><h3><a href="https://github.com/feverdreme/ballroom-rounds-maker">Ballroom Rounds Maker ↗</a></h3><p>A tool for assembling ballroom competition music into complete rounds. I built an OCaml audio pipeline with configurable fades and breaks, alongside terminal and Bonsai web editors.</p><p class="tech">OCaml · Bonsai · ffmpeg</p></article>
+        <article class="project"><h3><a href="https://github.com/feverdreme/lambda_os">Lambda OS ↗</a></h3><p>A kernel project built to explore operating systems and hardware interaction, including memory management and interrupt handling.</p><p class="tech">C · Assembly · Operating systems</p></article>
+        <article class="project"><h3><a href="https://github.com/feverdreme/pyNote">pyNote ↗</a></h3><p>A small markup language and converter for turning plain-text notes into Word documents, with configurable formatting and a command-line interface.</p><p class="tech">Python · Language tools</p></article>
+      </div>
+    </section>
+
+    <section class="section" id="writing" aria-labelledby="writing-heading">
+      <div class="section-heading"><h2 id="writing-heading">Writing &amp; presentations</h2><a href="writing.html">All writing →</a></div>
+      <article class="writing-item"><div class="when">Expository paper<span>December 2024</span></div><div><h3><a href="assets/magic-squares-polytopes.pdf">Magic Squares: An Application of Counting Lattice Points in Polytopes ↗</a></h3><p>With Olga Zhukova and Evan Huang. An exposition of polytopes, Ehrhart polynomials, and the enumeration of semimagic squares.</p></div></article>
+      <article class="writing-item"><div class="when">Course write-up<span>May 2026</span></div><div><h3><a href="assets/language-model-steering-and-reasoning.pdf">Language model steering, reasoning, and alignment ↗</a></h3><p>Paper critiques and proposed experiments on embedding-based steering, prolonged reinforcement learning, and model alignment. Written for CS 6740.</p></div></article>
+      <article class="writing-item"><div class="when">Research report<span>Spring 2026</span></div><div><h3><a href="assets/latent-reasoning-report.pdf">Latent Reasoning ↗</a></h3><p>My Math+AI Lab semester report on teacher-trace extraction, recurrent distillation, and the infrastructure I built.</p></div></article>
+      <article class="writing-item"><div class="when">Research presentation</div><div><h3><a href="assets/system-f-type-inference.pdf">System F Inference: Universal Subtyping ↗</a></h3><p>Selected slides from my work with Jules Jacobs and Nate Foster.</p></div></article>
+    </section>
+
+    <section class="section experience-grid" aria-label="Experience and teaching">
+      <div><h2>Experience</h2>
+        <article class="experience-item"><h3>Jane Street</h3><p class="meta">Software Engineering Intern · Summer 2026</p><p>Worked on market data services and data storage for quantitative research.</p></article>
+        <article class="experience-item"><h3>Intuitive Surgical</h3><p class="meta">Core Technology Engineering Software Intern · Summer 2025</p><p>Built a pipeline connecting static analysis results with an LLM-based tool for code fixes and test generation.</p></article>
+        <article class="experience-item"><h3>Lockheed Martin</h3><p class="meta">Software Intern, Offensive Cybersecurity Operations · Summers 2023 &amp; 2024</p><p>Worked on systems software, full-stack applications, and embedded Linux tooling.</p></article>
+      </div>
+      <div><h2>Teaching</h2>
+        <article class="experience-item"><h3>Natural Language Processing</h3><p class="meta">CS 4740 · Cornell · Spring 2026</p><p>Helped design a programming assignment, held office hours, and graded coursework and exams.</p></article>
+        <article class="experience-item"><h3>Programming Languages and Logics</h3><p class="meta">CS 4110 · Cornell · Fall 2025</p><p>Held office hours and graded coursework and exams.</p></article>
+        <article class="experience-item"><h3>Education</h3><p class="meta">Cornell University · Expected May 2027</p><p>B.A. in Computer Science and Mathematics.</p></article>
+      </div>
+    </section>
+  </main>
+  <footer class="closing"><div><p class="signature">Jeffrey Huang</p><p><a href="mailto:jrh382@cornell.edu">jrh382@cornell.edu</a></p></div><p><a href="https://github.com/feverdreme">GitHub</a> · <a href="assets/Jeffrey-Huang-CV.pdf">CV</a><br>Last updated October 2026</p></footer>
+</div>
+</body>
+</html>
