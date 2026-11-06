@@ -1,0 +1,34 @@
+---
+import { getCollection, getEntry, render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+
+const page = await getEntry('pages', 'projects');
+if (!page) throw new Error('Missing projects introduction');
+const { Content: Introduction } = await render(page);
+const projects = (await getCollection('projects')).filter(project => project.data.catalogOrder).sort((a, b) => a.data.catalogOrder! - b.data.catalogOrder!);
+const filters = [
+  ['all', 'All projects'],
+  ['languages', 'Languages & systems'],
+  ['ai', 'AI & experiments'],
+  ['tools', 'Tools'],
+  ['web', 'Web & community'],
+];
+---
+
+<Base title={page.data.title} description={page.data.description} active="projects">
+  <div class="page-intro">
+    <a class="back-link" href="/">← Home</a>
+    <p class="eyebrow">{page.data.eyebrow}</p>
+    <h1>{page.data.title}</h1>
+    <Introduction />
+  </div>
+  <div class="filters" role="group" aria-label="Filter projects" hidden>
+    {filters.map(([category, label]) => <button class="filter" type="button" data-filter={category} aria-pressed={category === 'all' ? 'true' : 'false'}>{label}</button>)}
+  </div>
+  <p class="catalog-heading" id="project-count" aria-live="polite"></p>
+  <div class="catalog">{projects.map(project => <ProjectCard project={project} />)}</div>
+  <script>
+    import '../scripts/projects.js';
+  </script>
+</Base>

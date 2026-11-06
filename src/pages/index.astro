@@ -1,0 +1,55 @@
+---
+import { getCollection, getEntry, render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import ResearchEntry from '../components/ResearchEntry.astro';
+import WritingEntry from '../components/WritingEntry.astro';
+import ExperienceEntry from '../components/ExperienceEntry.astro';
+
+const profile = await getEntry('profile', 'jeffrey');
+if (!profile) throw new Error('Missing profile content');
+const { Content: Biography } = await render(profile);
+const person = profile.data;
+const projects = await getCollection('projects');
+const research = projects.filter(p => p.data.researchOrder).sort((a, b) => a.data.researchOrder! - b.data.researchOrder!);
+const featured = projects.filter(p => p.data.featuredOrder).sort((a, b) => a.data.featuredOrder! - b.data.featuredOrder!);
+const writing = (await getCollection('writing')).filter(p => p.data.homeOrder).sort((a, b) => a.data.homeOrder! - b.data.homeOrder!);
+const experience = (await getCollection('experience')).sort((a, b) => a.data.order - b.data.order);
+const teaching = (await getCollection('teaching')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<Base>
+  <section class="hero" aria-labelledby="name">
+    <div>
+      <h1 id="name">{person.heading}</h1>
+      <div class="bio"><Biography /></div>
+      <div class="contact-links">
+        <a href={`mailto:${person.email}`}>Email</a>
+        <a href={person.github}>GitHub ↗</a>
+        <a href={person.cv}>Curriculum vitae ↗</a>
+      </div>
+    </div>
+    <div><img class="portrait" src={person.portrait} alt={person.portraitAlt} width="460" height="460" fetchpriority="high" /></div>
+  </section>
+
+  <section class="section" id="research" aria-labelledby="research-heading">
+    <div class="section-heading"><h2 id="research-heading">Research</h2></div>
+    {research.map(project => <ResearchEntry project={project} />)}
+  </section>
+
+  <section class="section" id="projects" aria-labelledby="projects-heading">
+    <div class="section-heading"><h2 id="projects-heading">Things I’ve built</h2><a href="/projects.html">All projects →</a></div>
+    <p class="section-intro">A selection of language implementations, systems, and tools. More projects and experiments are collected on the <a href="/projects.html">projects page</a>.</p>
+    <div class="project-list">{featured.map(project => <ProjectCard project={project} featured />)}</div>
+  </section>
+
+  <section class="section" id="writing" aria-labelledby="writing-heading">
+    <div class="section-heading"><h2 id="writing-heading">Writing &amp; presentations</h2><a href="/writing.html">All writing →</a></div>
+    {writing.map(entry => <WritingEntry entry={entry} featured />)}
+  </section>
+
+  <section class="section experience-grid" aria-label="Experience and teaching">
+    <div><h2>Experience</h2>{experience.map(entry => <ExperienceEntry entry={entry} />)}</div>
+    <div><h2>Teaching</h2>{teaching.map(entry => <ExperienceEntry entry={entry} />)}</div>
+  </section>
+</Base>

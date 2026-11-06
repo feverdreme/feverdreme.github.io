@@ -1,0 +1,22 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+import Links from './Links.astro';
+
+interface Props { entry: CollectionEntry<'writing'>; featured?: boolean }
+const { entry, featured = false } = Astro.props;
+const { Content } = await render(entry);
+const data = entry.data;
+---
+
+<article class="writing-item">
+  <div class="when">
+    {featured ? data.homeLabel : data.period}
+    {(featured ? data.homePeriod : data.format) && <span>{featured ? data.homePeriod : data.format}</span>}
+  </div>
+  <div>
+    <h3><a href={data.url}>{featured ? (data.homeTitle ?? data.title) : data.title} ↗</a></h3>
+    {!featured && data.meta && <p class="meta">{data.meta}</p>}
+    {featured && data.homeSummary ? <p>{data.homeSummary}</p> : <Content />}
+    {!featured && <Links links={data.links} />}
+  </div>
+</article>

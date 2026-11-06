@@ -1,0 +1,24 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+import Links from './Links.astro';
+
+interface Props { project: CollectionEntry<'projects'> }
+const { project } = Astro.props;
+const { Content } = await render(project);
+const data = project.data;
+---
+
+<article class="research-entry">
+  <div class="when">
+    {data.current && <span class="status">Current</span>}
+    <span>{data.period}</span>
+  </div>
+  <div>
+    <h3>{data.title}</h3>
+    <p class="meta">{data.meta}</p>
+    {data.researchSummary
+      ? data.researchSummary.split(/\n\s*\n/).map(paragraph => <p>{paragraph}</p>)
+      : <Content />}
+    <Links links={data.researchLinks} />
+  </div>
+</article>

@@ -1,0 +1,13 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+
+interface Props { entry: CollectionEntry<'experience'> | CollectionEntry<'teaching'> }
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+
+<article class="experience-item">
+  <h3>{entry.data.title}</h3>
+  <p class="meta">{entry.data.meta}</p>
+  <Content />
+</article>

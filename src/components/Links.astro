@@ -1,0 +1,12 @@
+---
+interface Props {
+  links: { label: string; url: string }[];
+  class?: string;
+}
+const { links, class: className = 'entry-links' } = Astro.props;
+---
+{links.length > 0 && (
+  <div class={className}>
+    {links.map(link => <a href={link.url}>{link.label} {link.url.endsWith('.html') ? '→' : '↗'}</a>)}
+  </div>
+)}

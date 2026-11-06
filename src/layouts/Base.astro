@@ -1,0 +1,65 @@
+---
+import { getEntry } from 'astro:content';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  active?: 'projects' | 'writing';
+  mainClass?: string;
+}
+
+const { title, description, active, mainClass } = Astro.props;
+const profile = await getEntry('profile', 'jeffrey');
+if (!profile) throw new Error('Missing src/content/profile/jeffrey.md');
+const person = profile.data;
+const pageTitle = title ? `${title} | ${person.name}` : `${person.name} | Cornell University`;
+const pathname = Astro.url.pathname;
+const canonical = new URL(pathname === '/index.html' ? '/' : pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description ?? person.description} />
+    <meta name="theme-color" content="#faf9f6" />
+    <meta property="og:title" content={title ?? person.name} />
+    <meta property="og:description" content={description ?? person.description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical.href} />
+    <meta property="og:image" content={new URL(person.portrait, Astro.site).href} />
+    <link rel="canonical" href={canonical.href} />
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&family=Fira+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <div class="shell">
+      <header class="masthead">
+        <a class="wordmark" href="/">{person.name}</a>
+        <nav aria-label="Main navigation">
+          <a href="/index.html#research">Research</a>
+          <a href="/projects.html" aria-current={active === 'projects' ? 'page' : undefined}>Projects</a>
+          <a href="/writing.html" aria-current={active === 'writing' ? 'page' : undefined}>Writing</a>
+          <a href={person.cv}>CV ↗</a>
+        </nav>
+      </header>
+      <main id="main" class={mainClass}><slot /></main>
+      <footer class="closing">
+        <div>
+          <p class="signature">{person.name}</p>
+          <p><a href={`mailto:${person.email}`}>{person.email}</a></p>
+        </div>
+        <p>
+          <a href={person.github}>GitHub</a> · <a href={person.cv}>CV</a><br />
+          Last updated {person.updated}
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>
