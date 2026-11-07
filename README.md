@@ -89,4 +89,4 @@ The original URLs are retained: `/projects.html`, `/writing.html`, and `/researc
 
 The public site is hosted at https://feverdreme.github.io/ from the `feverdreme/feverdreme.github.io` repository. Publication was authorized by Jeffrey on November 6, 2026.
 
-Pushing to `main` runs `.github/workflows/deploy.yml`: install dependencies, check the source, build the static site, check internal links, and deploy `dist/` to GitHub Pages. Local edits and builds do not publish until pushed.
+GitHub Pages serves the built files from the root of the `gh-pages` branch. There is no custom GitHub Actions workflow. Source lives on `main`; publishing requires running `pnpm check`, `pnpm build`, and `pnpm check:links` locally, then committing the contents of `dist/` to `gh-pages`. Include `.nojekyll` in the published files. Pushing source changes to `main` alone does not update the public site.
