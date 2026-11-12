@@ -1,6 +1,6 @@
 ---
 title: "Latent reasoning"
-researchOrder: 3
+researchOrder: 2
 period: "Spring 2026–present"
 current: true
 meta: "Cornell Math+AI Lab · Advisor: Daniel Halpern-Leistner"

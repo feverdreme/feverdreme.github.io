@@ -1,6 +1,6 @@
 ---
 title: "Dynamic scheduling for type inference"
-researchOrder: 2
+researchOrder: 3
 period: "2024–2025"
 current: false
 meta: "Cornell University · Advisors: Nate Foster & Jules Jacobs"

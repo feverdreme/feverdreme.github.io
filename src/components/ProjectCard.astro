@@ -11,7 +11,7 @@ const summary = featured ? (data.featuredSummary ?? data.summary) : data.summary
 
 <article class="project" data-category={featured ? undefined : data.categories.join(' ')}>
   <h3>
-    {data.url ? <a href={data.url}>{data.title} {data.url.endsWith('.html') ? '→' : '↗'}</a> : data.title}
+    {data.url ? <a target="_blank" rel="noopener noreferrer" href={data.url}>{data.title} {data.url.endsWith('.html') ? '→' : '↗'}</a> : data.title}
   </h3>
   {summary ? <p>{summary}</p> : <Content />}
   <p class="tech">{data.technologies.join(' · ')}</p>

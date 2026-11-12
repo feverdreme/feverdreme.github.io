@@ -14,7 +14,7 @@ const data = entry.data;
     {(featured ? data.homePeriod : data.format) && <span>{featured ? data.homePeriod : data.format}</span>}
   </div>
   <div>
-    <h3><a href={data.url}>{featured ? (data.homeTitle ?? data.title) : data.title} ↗</a></h3>
+    <h3><a target="_blank" rel="noopener noreferrer" href={data.url}>{featured ? (data.homeTitle ?? data.title) : data.title} ↗</a></h3>
     {!featured && data.meta && <p class="meta">{data.meta}</p>}
     {featured && data.homeSummary ? <p>{data.homeSummary}</p> : <Content />}
     {!featured && <Links links={data.links} />}
