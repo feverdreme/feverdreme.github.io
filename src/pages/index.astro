@@ -5,6 +5,7 @@ import ProjectCard from '../components/ProjectCard.astro';
 import ResearchEntry from '../components/ResearchEntry.astro';
 import WritingEntry from '../components/WritingEntry.astro';
 import ExperienceEntry from '../components/ExperienceEntry.astro';
+import { newestWritingFirst } from '../scripts/writing-order';
 
 const profile = await getEntry('profile', 'jeffrey');
 if (!profile) throw new Error('Missing profile content');
@@ -13,7 +14,7 @@ const person = profile.data;
 const projects = await getCollection('projects');
 const research = projects.filter(p => p.data.researchOrder).sort((a, b) => a.data.researchOrder! - b.data.researchOrder!);
 const featured = projects.filter(p => p.data.featuredOrder).sort((a, b) => a.data.featuredOrder! - b.data.featuredOrder!);
-const writing = (await getCollection('writing')).filter(p => p.data.homeOrder).sort((a, b) => a.data.homeOrder! - b.data.homeOrder!);
+const writing = (await getCollection('writing')).filter(p => p.data.homeOrder).sort(newestWritingFirst);
 const experience = (await getCollection('experience')).sort((a, b) => a.data.order - b.data.order);
 const teaching = (await getCollection('teaching')).sort((a, b) => a.data.order - b.data.order);
 ---

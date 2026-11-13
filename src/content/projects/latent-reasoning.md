@@ -26,7 +26,7 @@ resources:
 
 ## The project
 
-In the Cornell Math+AI Lab, we are investigating a simple reasoning architecture that can work across many tasks with small modifications. The goal is a model that builds on earlier computations, allocates different amounts of computation to different inputs, and can retain a growing history of its reasoning.
+In the <a href="https://danielhl.github.io/math-ai.html" target="_blank" rel="noopener noreferrer">Cornell Math+AI Lab</a>, we are investigating a simple reasoning architecture that can work across many tasks with small modifications. The goal is a model that builds on earlier computations, allocates different amounts of computation to different inputs, and can retain a growing history of its reasoning.
 
 The model encodes an input, then repeatedly updates a continuous latent state while attending to the input and earlier states. A decoder turns each state into a prediction, allowing us to study how the answer develops over successive reasoning steps. The lab's task implementations include Sudoku, maze solving, graph connectivity, and other algorithmic problems. These provide settings for exploring how the architecture learns iterative computation and generalizes across problem sizes and levels of difficulty.
 

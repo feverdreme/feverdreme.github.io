@@ -1,6 +1,7 @@
 ---
 title: "Language model steering, reasoning, and alignment"
 url: "/assets/language-model-steering-and-reasoning.pdf"
+date: "2026-05"
 section: "exposition"
 order: 2
 period: "May 2026"

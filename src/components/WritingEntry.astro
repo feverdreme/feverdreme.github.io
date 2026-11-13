@@ -1,6 +1,7 @@
 ---
 import { render, type CollectionEntry } from 'astro:content';
 import Links from './Links.astro';
+import LinkedText from './LinkedText.astro';
 
 interface Props { entry: CollectionEntry<'writing'>; featured?: boolean }
 const { entry, featured = false } = Astro.props;
@@ -15,8 +16,8 @@ const data = entry.data;
   </div>
   <div>
     <h3><a target="_blank" rel="noopener noreferrer" href={data.url}>{featured ? (data.homeTitle ?? data.title) : data.title} ↗</a></h3>
-    {!featured && data.meta && <p class="meta">{data.meta}</p>}
-    {featured && data.homeSummary ? <p>{data.homeSummary}</p> : <Content />}
+    {!featured && data.meta && <p class="meta"><LinkedText text={data.meta} /></p>}
+    {featured && data.homeSummary ? <p><LinkedText text={data.homeSummary} /></p> : <Content />}
     {!featured && <Links links={data.links} />}
   </div>
 </article>

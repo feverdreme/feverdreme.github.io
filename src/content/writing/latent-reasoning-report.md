@@ -1,6 +1,7 @@
 ---
 title: "Math 4900 Semester Report: Latent Reasoning"
 url: "/assets/latent-reasoning-report.pdf"
+date: "2026-spring"
 section: "reports"
 order: 3
 period: "Spring 2026"

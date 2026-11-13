@@ -1,6 +1,7 @@
 ---
 title: "Magic Squares: An Application of Counting Lattice Points in Polytopes"
 url: "/assets/magic-squares-polytopes.pdf"
+date: "2024-12"
 section: "exposition"
 order: 1
 period: "December 2024"

@@ -1,6 +1,7 @@
 ---
 title: "Paradigm Agnostic Code Embeddings"
 url: "/assets/paradigm-agnostic-code-embeddings.pdf"
+date: "2024-fall"
 section: "reports"
 order: 4
 period: "Fall 2024"

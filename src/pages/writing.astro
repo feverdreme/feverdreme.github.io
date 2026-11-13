@@ -2,16 +2,12 @@
 import { getCollection, getEntry, render } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import WritingEntry from '../components/WritingEntry.astro';
+import { newestWritingFirst } from '../scripts/writing-order';
 
 const page = await getEntry('pages', 'writing');
 if (!page) throw new Error('Missing writing introduction');
 const { Content: Introduction } = await render(page);
-const entries = (await getCollection('writing')).sort((a, b) => a.data.order - b.data.order);
-const sections = [
-  ['exposition', 'Expository writing'],
-  ['reports', 'Research & technical reports'],
-  ['slides', 'Presentations & documentation'],
-];
+const entries = (await getCollection('writing')).sort(newestWritingFirst);
 ---
 
 <Base title={page.data.title} description={page.data.description} active="writing">
@@ -21,10 +17,7 @@ const sections = [
     <h1>{page.data.title}</h1>
     <Introduction />
   </div>
-  {sections.map(([id, title]) => (
-    <section class="section" aria-labelledby={id}>
-      <div class="section-heading"><h2 id={id}>{title}</h2></div>
-      {entries.filter(entry => entry.data.section === id).map(entry => <WritingEntry entry={entry} />)}
-    </section>
-  ))}
+  <section class="section" aria-label="Writing and presentations, newest first">
+    {entries.map(entry => <WritingEntry entry={entry} />)}
+  </section>
 </Base>

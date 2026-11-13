@@ -1,6 +1,7 @@
 ---
 title: "Modern Practices and Type Integration"
 url: "/assets/cuauv-modern-practices-and-types.pdf"
+date: "2024-05"
 section: "reports"
 order: 5
 period: "May 2024"

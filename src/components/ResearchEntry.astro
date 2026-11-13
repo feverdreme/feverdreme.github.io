@@ -1,6 +1,7 @@
 ---
 import { render, type CollectionEntry } from 'astro:content';
 import Links from './Links.astro';
+import LinkedText from './LinkedText.astro';
 
 interface Props { project: CollectionEntry<'projects'> }
 const { project } = Astro.props;
@@ -15,7 +16,7 @@ const data = project.data;
   </div>
   <div>
     <h3>{data.title}</h3>
-    <p class="meta">{data.meta}</p>
+    <p class="meta"><LinkedText text={data.meta ?? ''} /></p>
     {data.researchSummary
       ? data.researchSummary.split(/\n\s*\n/).map(paragraph => <p>{paragraph}</p>)
       : <Content />}

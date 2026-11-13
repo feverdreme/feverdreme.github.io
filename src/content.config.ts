@@ -40,6 +40,7 @@ const writing = defineCollection({
     title: z.string(),
     url: z.string(),
     section: z.enum(['exposition', 'reports', 'slides']),
+    date: z.string().regex(/^\d{4}(-(\d{2}|spring|fall))?$/).optional(),
     order,
     period: z.string(),
     format: z.string().optional(),

@@ -1,0 +1,12 @@
+---
+import affiliations from '../content/affiliations.json';
+
+interface Props { text: string }
+const { text } = Astro.props;
+const names = Object.keys(affiliations).sort((a, b) => b.length - a.length);
+const pattern = new RegExp(`(${names.map(name => name.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|')})`, 'g');
+const parts = text.split(pattern);
+---
+{parts.map(part => part in affiliations
+  ? <a href={affiliations[part as keyof typeof affiliations]} target="_blank" rel="noopener noreferrer">{part}</a>
+  : part)}
